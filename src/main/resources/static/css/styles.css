@@ -1,0 +1,18 @@
+#home{
+    background-color: steelblue;
+    
+}
+
+h2 {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* FOOTER */
+
+#footer {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    background-color: rgb(134, 131, 126);
+}

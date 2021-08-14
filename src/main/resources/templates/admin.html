@@ -4,42 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
     <title>TADS HARDWARE</title>
 </head>
 <body>
-    <header>
-        <h1>TADS HARDWARE - ADMIN</h1>
-    </header>
-    <main>
-        <section>
-            <a href="/cadastro">Cadastrar</a>
-        </section>
-        <table>
-            <p th:text="${#request.getParameter('msg')}"></p>
-            <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>Nome</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Preço</th>
-            </tr>
-            <tr th:each=" hardware: ${listaHardware}">
-                <td><img th:src="@{'/images/' + ${hardware.getImgUri()}}" alt="imagem" width="200"></td>
-                <td th:text="${hardware.id}"></td>
-                <td th:text="${hardware.nome}"></td>
-                <td th:text="${hardware.marca}"></td>
-                <td th:text="${hardware.modelo}"></td>
-                <td th:text="${hardware.valor}"></td>
-                <td>
-                    <a th:href="@{'/editar/' + ${hardware.id}}">editar</a>
+    <div th:replace="fragments/commons :: menu-admin"></div>
 
-                </td>
-                <td>
-                    <a th:href="@{'/deletar/' + ${hardware.id}}">deletar</a>
-                </td>
-            </tr>
-        </table>
+    
+    <div class="container">
+        
+        <p th:text="${#request.getParameter('msg')}"></p>
+
+        <div th:each=" hardware : ${listaHardware}" class="card" style="width: 18rem;">
+            <img th:src="@{'/images/' + ${hardware.getImgUri()}}" alt="imagem" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title" th:text="${hardware.nome}"></h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              ID: <li class="list-group-item" th:text="${hardware.id}">A third item</li>
+              Marca: <li class="list-group-item" th:text="${hardware.marca}"></li>
+              Modelo: <li class="list-group-item" th:text="${hardware.modelo}">A second item</li>
+              Preço: <li class="list-group-item" th:text="${hardware.valor}">A third item</li>
+
+            </ul>
+            <div class="card-body">
+                <a th:href="@{'/editar/' + ${hardware.id}}">Editar</a>
+                <a th:href="@{'/deletar/' + ${hardware.id}}">Deletar</a>
+            </div>
+          </div>
+
+        </div>
+        
+
+                
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
     </main>
 </body>
 </html>
