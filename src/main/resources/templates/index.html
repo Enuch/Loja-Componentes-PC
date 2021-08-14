@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TADS HARDWARE</title>
+</head>
+<body>
+    <header>
+        <h1>TADS HARDWARE</h1>
+    </header>
+    <main>
+        <section>
+            <a href="/carrinho">Carrinho</a>
+        </section>
+        <table>
+            <p th:text="${#request.getParameter('msg')}"></p>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Preço</th>
+            </tr>
+            <tr th:each=" hardware: ${listaHardware}">
+                <td><img th:src="@{'/images/' + ${hardware.getImgUri()}}" alt="imagem" width="200"></td>
+                <td th:text="${hardware.id}" name="id"></td>
+                <td th:text="${hardware.nome}"></td>
+                <td th:text="${hardware.marca}"></td>
+                <td th:text="${hardware.modelo}"></td>
+                <td th:text="${hardware.valor}"></td>
+                <td>
+                    <a th:href="@{'/addCarrinho/' + ${hardware.id}}">Adicionar ao carrinho</a>
+
+                </td>
+               
+            </tr>
+        </table>
+    </main>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TADS HARDWARE</title>
+</head>
+<body>
+    <header>
+        <h1>TADS HARDWARE - CADASTRO</h1>
+    </header>
+    <main>
+        <form th:action="@{/salvar}" method="POST" th:object="${hardware}" enctype="multipart/form-data">
+            <h4 th:if="@{#fields.hasErrors(nome)}" th:errors="*{nome}"></h4>
+            <h4 th:if="@{#fields.hasErrors(marca}" th:errors="*{Marca}"></h4>
+            <h4 th:if="@{#fields.hasErrors(modelo}" th:errors="*{modelo}"></h4>
+            <h4 th:if="@{#fields.hasErrors(valor)}" th:errors="*{valor}"></h4>
+            Imagem <input type="file" name="file" accept="image/jpeg">
+            ID <input type="number" disabled>
+            Nome <input type="text" name="nome" th:field="*{nome}" required>
+            Marca <input type="text" name="marca" th:field="*{marca}"> <br>
+            Modelo <input type="text" name="modelo" th:field="*{modelo}">
+            Preço <input type="text" name="valor" th:field="*{valor}" required> <br>
+            
+            <button type="submit">Cadastrar</button>
+        </form>
+    </main>
+</body>
+</html>
