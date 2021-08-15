@@ -1,40 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     <title>TADS HARDWARE</title>
 </head>
+
 <body>
     <div th:replace="fragments/commons :: menu-index-carrinho"></div>
 
-    <main>
-        <section>
-            <a href="/index">index</a>
-        </section>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Preço</th>
-            </tr>
-            <tr th:each=" hardware: ${carrinho}">
-                <td><img th:src="@{'/images/' + ${hardware.getImgUri()}}" alt="imagem" width="200"></td>
-                <td th:text="${hardware.id}"></td>
-                <td th:text="${hardware.nome}"></td>
-                <td th:text="${hardware.marca}"></td>
-                <td th:text="${hardware.modelo}"></td>
-                <td th:text="${hardware.valor}"></td>
-            </tr>
-        </table>
-        <a href="finalizarCarrinho">Finalizar carrinho</a>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
-    </main>
+    
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div th:each=" hardware : ${carrinho}" class="card" style="width: 18rem;">
+                <img th:src="@{'/images/' + ${hardware.getImgUri()}}" alt="imagem" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${hardware.nome}"></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: <span th:text="${hardware.id}"></span></li>
+                    <li class="list-group-item">Marca: <span th:text="${hardware.marca}"></span></li>
+                    <li class="list-group-item">Modelo: <span th:text="${hardware.modelo}"></span></li>
+                    <li class="list-group-item">Preço: <span th:text="${hardware.valor}"></span></li>
+
+                </ul>
+                <div class="card-body">
+                    <a href="finalizarCarrinho">Finalizar carrinho</a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
 </body>
+
 </html>

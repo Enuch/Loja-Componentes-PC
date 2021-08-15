@@ -150,13 +150,15 @@ public class HardwareController {
             compras = carrinho.size();
         }
 
+        model.addAttribute("compras", compras);
+
         session.setAttribute("contador", contador);
 
-        out.println("ID: " + session.getId() +
-                    " Data criação: " + formataData.format(dataCriacao) +
-                    " Ultimo Acesso: " + formataData.format(dataUltimoAcesso) +
-                    " Contador: " + contador +
-                    " Itens no carrinho: " + compras);
+        //out.println("ID: " + session.getId() +
+                    //" Data criação: " + formataData.format(dataCriacao) +
+                    //" Ultimo Acesso: " + formataData.format(dataUltimoAcesso) +
+                    //" Contador: " + contador +
+                    //" Itens no carrinho: " + compras);
 
         // Cookies
 

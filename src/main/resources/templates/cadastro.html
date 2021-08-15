@@ -1,33 +1,65 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     <title>TADS HARDWARE</title>
 </head>
+
 <body>
     <div th:replace="fragments/commons :: menu-admin-cadastro"></div>
 
-    <main>
-        <form th:action="@{/salvar}" method="POST" th:object="${hardware}" enctype="multipart/form-data">
+    <div class="container">
+
+        <form class="row g-3" th:action="@{/salvar}" method="POST" th:object="${hardware}"
+            enctype="multipart/form-data">
             <h4 th:if="@{#fields.hasErrors(nome)}" th:errors="*{nome}"></h4>
             <h4 th:if="@{#fields.hasErrors(marca}" th:errors="*{Marca}"></h4>
             <h4 th:if="@{#fields.hasErrors(modelo}" th:errors="*{modelo}"></h4>
             <h4 th:if="@{#fields.hasErrors(valor)}" th:errors="*{valor}"></h4>
-            Imagem <input type="file" name="file" accept="image/jpeg">
-            ID <input type="number" disabled>
-            Nome <input type="text" name="nome" th:field="*{nome}" required>
-            Marca <input type="text" name="marca" th:field="*{marca}"> <br>
-            Modelo <input type="text" name="modelo" th:field="*{modelo}">
-            Preço <input type="text" name="valor" th:field="*{valor}" required> <br>
-            
-            <button type="submit">Cadastrar</button>
-        </form>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">ID</label>
+                <input type="number" class="form-control" id="inputEmail4" disabled>
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="inputPassword4" name="nome" placeholder="Placa de vídeo" th:field="*{nome}">
+            </div>
+            <div class="col-12">
+                <label for="inputAddress" class="form-label">Marca</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="ASUS" name="marca"
+                    th:field="*{marca}">
+            </div>
+            <div class="col-12">
+                <label for="inputAddress2" class="form-label">Modelo</label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Gameing" name="modelo"
+                    th:field="*{modelo}">
+            </div>
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label">Preço</label>
+                <input type="text" class="form-control" id="inputCity" name="valor" placeholder="20,00"
+                    th:field="*{valor}">
+            </div>
+            <div class="col-md-4">
+                <label for="inputZip" class="form-label">Imagem</label>
+                <input type="file" class="form-control" id="inputZip" name="file" accept="image/jpeg" required>
+            </div>
 
-    </main>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </form>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
 </body>
+
 </html>
